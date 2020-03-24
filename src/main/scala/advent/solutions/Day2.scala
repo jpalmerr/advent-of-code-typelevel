@@ -14,46 +14,7 @@ object Day2 {
       * @return The program after having been run on itself
       */
     def run(program: List[Int]): List[Int] = {
-      val start: Int = 0
-      val step: Int = 4
-      val indexList = List.range(start, program.length, step)
-      indexList.foldLeft(program)((acc, indexOfOpcode) =>
-        repair(acc, indexOfOpcode)
-      )
-    }
-
-    final case class Entry(index: Int, value: Int)
-
-    private val additionCode = 1
-    private val multiplicationCode = 2
-    private val lookupAndAdd = lookupAndOperate(_ + _)(_, _)
-    private val lookupAndMultiply = lookupAndOperate(_ * _)(_, _)
-
-    private def repair(program: List[Int], indexOfOpcode: Int): List[Int] = {
-      if (program(indexOfOpcode) == additionCode)
-        repairProgram(program, lookupAndAdd(indexOfOpcode, program))
-      else if (program(indexOfOpcode) == multiplicationCode)
-        repairProgram(program, lookupAndMultiply(indexOfOpcode, program))
-      else program
-    }
-
-    private def lookupAndOperate(
-        f: (Int, Int) => Int
-    )(indexOfOpcode: Int, program: List[Int]): Entry = {
-      Entry(
-        program(indexOfOpcode + 3),
-        f(
-          program(program(indexOfOpcode + 1)),
-          program(program(indexOfOpcode + 2))
-        )
-      )
-    }
-
-    private def repairProgram(
-        program: List[Int],
-        entry: Entry
-    ): List[Int] = {
-      program.updated(entry.index, entry.value)
+      ???
     }
   }
 
@@ -71,25 +32,11 @@ object Day2 {
       * @return The input that would be entered in the program to produce the given output
       */
     def inputForOutput(program: List[Int], output: Int): Option[Input] = {
-      val start: Int = 0
-      val step: Int = 1
-      val end: Int = 100
-      val nouns = LazyList.range(start, end, step)
-      val verbs = LazyList.range(start, end, step)
-      val inputs: LazyList[Input] =
-        nouns.flatMap(n => verbs.map(v => Input(n, v)))
-
-      def check(input: Input): Boolean = {
-        val modifiedProgram = generateUpdatedProgram(input, program)
-        val result = run(modifiedProgram).head
-        result == output
-      }
-
-      inputs.find(check(_))
+      ???
     }
 
     def generateUpdatedProgram(input: Input, program: List[Int]): List[Int] = {
-      program.updated(1, input.noun).updated(2, input.verb)
+      ???
     }
   }
 

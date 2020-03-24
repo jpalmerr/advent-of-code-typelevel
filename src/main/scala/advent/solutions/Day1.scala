@@ -16,7 +16,7 @@ object Day1 {
       * @return The fuel required to to launch the module
       */
     def fuel(mass: Int): Int = {
-      (mass / 3) - 2
+      ???
     }
 
     /** Calculates the sum of the fuel required to launch each module of a given mass
@@ -25,7 +25,7 @@ object Day1 {
       * @return The sum of the fuel required to launch each module
       */
     def sumOfFuel(masses: List[Int]): Int = {
-      masses.map(fuel).sum
+      ???
     }
 
   }
@@ -38,13 +38,9 @@ object Day1 {
       * @return The fuel required to launch the module, plus the fuel required to launch that fuel
       */
     def totalFuel(mass: Int): Int = {
-      @tailrec
-      def go(currentFuel: Int, accum: Int): Int =
-        if (currentFuel < 0) accum
-        else go(Part1.fuel(currentFuel), accum + currentFuel)
 
-      go(Part1.fuel(mass), 0)
-
+      def go(currentFuel: Int, accum: Int): Int = ???
+      ???
     }
 
     /** Calculates the sum of the total fuel required to launch each module of a given mass
@@ -53,7 +49,7 @@ object Day1 {
       * @return The sum of the total fuel required to launch each module
       */
     def sumOfTotalFuel(masses: List[Int]): Int = {
-      masses.map(totalFuel).sum
+      ???
     }
   }
 
