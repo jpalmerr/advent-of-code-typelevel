@@ -1,6 +1,6 @@
 package advent.solutions
 
-import scala.annotation.tailrec
+//import scala.annotation.tailrec
 
 /** Day 1: The Tyranny of the Rocket Equation
   *
@@ -16,7 +16,7 @@ object Day1 {
       * @return The fuel required to to launch the module
       */
     def fuel(mass: Int): Int = {
-      ???
+      (mass / 3) - 2
     }
 
     /** Calculates the sum of the fuel required to launch each module of a given mass
@@ -25,7 +25,8 @@ object Day1 {
       * @return The sum of the fuel required to launch each module
       */
     def sumOfFuel(masses: List[Int]): Int = {
-      ???
+//      masses.map(x => fuel(x)).sum
+      masses.map(fuel).sum
     }
 
   }
@@ -39,8 +40,11 @@ object Day1 {
       */
     def totalFuel(mass: Int): Int = {
 
-      def go(currentFuel: Int, accum: Int): Int = ???
-      ???
+      def go(currentFuel: Int, accumulator: Int): Int = {
+        if (currentFuel < 0)  accumulator
+        else go(Part1.fuel(currentFuel), accumulator + currentFuel)
+      }
+      go(Part1.fuel(mass), 0)
     }
 
     /** Calculates the sum of the total fuel required to launch each module of a given mass
@@ -49,7 +53,7 @@ object Day1 {
       * @return The sum of the total fuel required to launch each module
       */
     def sumOfTotalFuel(masses: List[Int]): Int = {
-      ???
+      masses.map(totalFuel).sum
     }
   }
 
@@ -58,14 +62,13 @@ object Day1 {
   def main(args: Array[String]): Unit = {
 
     // Copy the puzzle input from https://adventofcode.com/2019/day/1/input
-    val puzzleInput: List[Int] = List(1, 12, 2, 3, 1, 1, 2, 3, 1, 3, 4, 3, 1, 5,
-      0, 3, 2, 10, 1, 19, 1, 19, 9, 23, 1, 23, 6, 27, 1, 9, 27, 31, 1, 31, 10,
-      35, 2, 13, 35, 39, 1, 39, 10, 43, 1, 43, 9, 47, 1, 47, 13, 51, 1, 51, 13,
-      55, 2, 55, 6, 59, 1, 59, 5, 63, 2, 10, 63, 67, 1, 67, 9, 71, 1, 71, 13,
-      75, 1, 6, 75, 79, 1, 10, 79, 83, 2, 9, 83, 87, 1, 87, 5, 91, 2, 91, 9, 95,
-      1, 6, 95, 99, 1, 99, 5, 103, 2, 103, 10, 107, 1, 107, 6, 111, 2, 9, 111,
-      115, 2, 9, 115, 119, 2, 13, 119, 123, 1, 123, 9, 127, 1, 5, 127, 131, 1,
-      131, 2, 135, 1, 135, 6, 0, 99, 2, 0, 14, 0)
+    val puzzleInput: List[Int] = List(55131, 114008, 145297, 76135, 50317, 134036, 122136, 97704, 51245, 141732, 120427,
+    142020, 88166, 55313, 110391, 112436, 78195, 74294, 128984, 68240, 137098, 142016, 83577, 89257, 107744, 67357,
+    131342, 98247, 137501, 134577, 65696, 84925, 50159, 110319, 91921, 103303, 84505, 84683, 100811, 82626, 66774,
+    123216, 95151, 88237, 60705, 124319, 102926, 143160, 92780, 64283, 132434, 113935, 84907, 113698, 117240, 129327,
+    78837, 144841, 138054, 130990, 100191, 141768, 138941, 108165, 62138, 121690, 117305, 90147, 134422, 78031, 121331,
+    120947, 120235, 138880, 141076, 119480, 66844, 77660, 106364, 99187, 144244, 120483, 77715, 135703, 125521, 123253,
+    127556, 96458, 91965, 73924, 95176, 87540, 122083, 146013, 67761, 100413, 145994, 149450, 94330, 112824)
 
     // Solve your puzzle using the functions in parts 1 and 2
     val part1 = Part1.sumOfFuel(puzzleInput)

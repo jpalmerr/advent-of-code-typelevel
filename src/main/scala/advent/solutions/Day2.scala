@@ -20,8 +20,6 @@ object Day2 {
 
   object Part2 {
 
-    import Day2.Part1.run
-
     /** Represents the two numbers provided at addresses 1 and 2 of an Intcode program */
     final case class Input(noun: Int, verb: Int)
 

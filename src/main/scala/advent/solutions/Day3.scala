@@ -1,7 +1,5 @@
 package advent.solutions
 
-import advent.solutions.Day3.WireParseError.{InvalidDirection, InvalidDistance}
-
 /** Day 3: Crossed Wires
   *
   * @see https://adventofcode.com/2019/day/3
@@ -57,8 +55,6 @@ object Day3 {
 
   final case class StartingAndEndingPoints(start: Coordinate, end: Coordinate)
 
-  import Direction._
-
   /**
     *
     * @param wire
@@ -92,7 +88,6 @@ object Day3 {
       displacement: Displacement,
       currentCoordinate: Coordinate
   ): Coordinate = {
-    import Direction._
     ???
   }
 
@@ -115,13 +110,14 @@ object Day3 {
       *
       * The closest intersection has the smallest manhattan distance
       *
-      * @param  wire0  The first wire
-      * @param  wire1  The second wire
+      * @param  wire0 The first wire
+      * @param  wire1 The second wire
       * @return The distance to the closest intersection if the wires intersect
       *         or [[None]] if they don't intersect at all
       */
     def distanceToIntersection(wire0: Wire, wire1: Wire): Option[Int] = {
       ???
+    }
   }
 
   object Part2 {
